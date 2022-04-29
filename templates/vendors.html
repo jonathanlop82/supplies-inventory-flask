@@ -1,0 +1,27 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename=('css/styles.css'))}}">
+{% endblock %}
+
+{% block title %} Insumos {% endblock %}
+
+{% include 'header.html' %}
+
+{% block navbar %}
+{{nav.mynavbar.render()}}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Proveedores</h2>
+        {{ wtf.quick_form(form, novalidate=True) }}
+        {% with message = get_flashed_messages() %}
+        <br><p class="message">{{ message[0] }}</p>
+    {% endwith %}
+    </div>
+
+    
+
+{% endblock %}

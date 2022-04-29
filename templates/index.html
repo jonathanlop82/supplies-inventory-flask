@@ -1,0 +1,28 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename=('css/styles.css'))}}">
+{% endblock %}
+
+
+{% include 'header.html' %}
+
+{% block navbar %}
+
+{% if current_user.is_authenticated %}
+    {{nav.mynavbar.render()}}
+{% else %}
+    {{ render_nav_item('logout', 'Logout', use_li=True) }}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Inicio</h1>
+        <p>{{ current_user.name }}</p>
+    </div>
+
+    
+{% endblock %}
